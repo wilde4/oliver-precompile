@@ -1,6 +1,13 @@
 OliverPrecompiler::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  if ENV["THEME_NAME"].present?
+    config.assets.prefix = "/themes/#{ENV["THEME_NAME"]}"
+    config.assets.paths << "/srv/www/oliver_precompile/themes/#{ENV["THEME_NAME"]}/assets/"
+  else
+    config.assets.prefix = "/themes"
+  end
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
