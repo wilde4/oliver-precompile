@@ -1,16 +1,16 @@
 Bundler.require
 
-BUILD_DIR = "#{File.dirname(__FILE__)}/public/assets"
+ENV["THEME_NAME"] = "bootstrap"
+BUILD_DIR = "#{File.dirname(__FILE__)}/public/assets/themes/#{ENV["THEME_NAME"]}"
 DIGEST    = true
 
 namespace :assets do
 
-  task :compile => :cleanup do
+  task :precompile => :cleanup do
+    
     sprockets = Sprockets::Environment.new
-    sprockets.append_path 'assets/images'
-    sprockets.append_path 'assets/javascripts'
-    sprockets.append_path 'assets/stylesheets'
-    sprockets.append_path 'fonts'
+
+    sprockets.append_path "../../themes/bootstrap/assets"
 
     sprockets.each_logical_path do |logical_path|
       if asset = sprockets.find_asset(logical_path)
@@ -21,6 +21,8 @@ namespace :assets do
         asset.write_to(filename)
       end
     end
+    
+    
   end
 
   # Cleanup asset directory
