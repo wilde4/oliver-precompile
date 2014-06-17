@@ -5,7 +5,7 @@ OliverPrecompiler::Application.configure do
     # =========================================================
     # = This only occurrs when we are doing assets:precompile =
     # =========================================================
-    config.assets.prefix = "/cloud9/precompiled_assets/#{ENV["THEME_NAME"]}"
+    config.assets.prefix = "../../#{ENV["THEME_NAME"]}"
     config.assets.paths << "/cloud9/cloud9/#{ENV["THEME_NAME"]}/assets/"
   end
 
