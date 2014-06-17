@@ -1,6 +1,14 @@
 OliverPrecompiler::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  if ENV["THEME_NAME"].present?
+    # =========================================================
+    # = This only occurrs when we are doing assets:precompile =
+    # =========================================================
+    config.assets.prefix = "/cloud9/precompiled_assets/#{ENV["THEME_NAME"]}"
+    config.assets.paths << "/cloud9/cloud9/#{ENV["THEME_NAME"]}/assets/"
+  end
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
