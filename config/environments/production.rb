@@ -8,6 +8,7 @@ OliverPrecompiler::Application.configure do
     config.assets.prefix = "../../#{ENV["THEME_NAME"]}"
     config.assets.paths << "/cloud9/cloud9/#{ENV["THEME_NAME"]}/assets/"
   end
+  config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif *.svg *.liquid *.ashx *.cur *.eot *.ttf *.woff]
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -35,7 +36,7 @@ OliverPrecompiler::Application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Generate digests for assets URLs.
   config.assets.digest = true
