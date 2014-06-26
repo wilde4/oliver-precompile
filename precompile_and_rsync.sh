@@ -19,4 +19,4 @@ cp -R /cloud9/cloud9/$1 /cloud9/sync/themes/$2/$1
 
 # RSYNC FILES TO oliver-production STACK INSTANCES IN Rails App Server LAYER
 # rails-app2: 10.80.166.218
-rsync -avz -e ssh  /cloud9/sync deploy@10.80.166.218:/srv/www/oliver/shared/system
+rsync -avz -e ssh  /cloud9/sync deploy@10.80.166.218:/srv/www/oliver/shared
