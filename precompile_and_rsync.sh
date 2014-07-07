@@ -9,7 +9,7 @@ exec 2>&1
 # RUN PRECOMPILE
 touch /cloud9/logs/$1.log
 cd /cloud9/precompiled_assets/oliver-precompile
-RAILS_ENV=production THEME_NAME=$1 bundle exec rake assets:precompile > /cloud9/logs/$1.log
+RAILS_ENV=production THEME_NAME=$1 MODE=$2 bundle exec rake assets:precompile > /cloud9/logs/$1.log
 
 # COPY PRECOMPILED ASSETS TO /cloud9/sync/precompiled_assets
 rm -rf /cloud9/sync/precompiled_assets/$2/$1
