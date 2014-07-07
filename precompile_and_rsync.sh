@@ -20,5 +20,5 @@ rm -rf /cloud9/sync/themes/$2/$1
 cp -Rf /cloud9/cloud9/$1 /cloud9/sync/themes/$2
 
 # RSYNC FILES TO oliver-production STACK INSTANCES IN Rails App Server LAYER
-# rails-app2: 10.80.166.218
-rsync -avz -e ssh  /cloud9/sync deploy@10.80.166.218:/srv/www/oliver/shared
+# Instance Type: m3.large
+rsync -arvce "ssh -o StrictHostKeyChecking=no" /cloud9/sync deploy@ec2-54-75-239-163.eu-west-1.compute.amazonaws.com:/srv/www/oliver/shared
