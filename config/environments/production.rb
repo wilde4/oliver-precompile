@@ -10,7 +10,7 @@ OliverPrecompiler::Application.configure do
     config.assets.paths << "/cloud9/cloud9/#{ENV["THEME_NAME"]}/assets/"
   end
   config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif *.svg *.liquid *.ashx *.cur *.eot *.ttf *.woff]
-
+  config.sass.cache = false
   # Code is not reloaded between requests.
   config.cache_classes = true
 
