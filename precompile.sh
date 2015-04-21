@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # LOGGING
-exec > >(tee /srv/www/oliver-precompile/shared/logs/precompile.log)
+exec > >(tee /srv/www/precompile_app/shared/logs/precompile.log)
 exec 2>&1
 
 # whoami
