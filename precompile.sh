@@ -17,4 +17,4 @@ cp -Rf /srv/www/precompile_app/current/public/$2/$1 /srv/www/precompile_app/shar
 
 # COPY LIQUID FILES TO /srv/www/precompile_app/shared/sync/themes/staging OR /srv/www/precompile_app/shared/sync/themes/production
 rm -rf /srv/www/precompile_app/shared/sync/themes/$2/$1
-cp -Rf /srv/www/volcanic_deploy/shared/themes/$1 /srv/www/precompile_app/shared/sync/themes/$2
+cp -Rf /srv/www/volcanic_deploy/shared/themes/$1 /srv/www/precompile_app/shared/sync/themes/$2/$1
