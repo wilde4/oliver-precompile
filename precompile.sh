@@ -6,6 +6,10 @@ exec 2>&1
 
 # whoami
 
+echo "---------------"
+echo "Starting Deploy to $2 for $1"
+echo "---------------"
+
 # RUN PRECOMPILE
 cd /srv/www/precompile_app/current
 RAILS_ENV=production THEME_NAME=$1 MODE=$2 bundle exec rake assets:clean
@@ -18,3 +22,7 @@ cp -Rf /srv/www/precompile_app/current/public/$2/$1 /srv/www/precompile_app/shar
 # COPY LIQUID FILES TO /srv/www/precompile_app/shared/sync/themes/staging OR /srv/www/precompile_app/shared/sync/themes/production
 rm -rf /srv/www/precompile_app/shared/sync/themes/$2/$1
 cp -Rf /srv/www/volcanic_deploy/shared/themes/$1 /srv/www/precompile_app/shared/sync/themes/$2/$1
+
+echo "---------------"
+echo "Finished Deploy to $2 for $1"
+echo "---------------"
