@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # LOGGING
-exec > >(tee /srv/www/precompile_app/shared/log/precompile.log)
+exec > >(tee /srv/www/volcanic_deploy/shared/system/logs/$2/$1.log)
 exec 2>&1
 
 # whoami
