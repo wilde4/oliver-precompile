@@ -26,3 +26,7 @@ cp -Rf /srv/www/volcanic_deploy/shared/themes/$1 /srv/www/precompile_app/shared/
 echo "---------------"
 echo "Finished Deploy to $2 for $1"
 echo "---------------"
+
+# POST TO DEPLOY API TO UPDATE LOG RECORD
+log = `cat /srv/www/volcanic_deploy/shared/system/logs/$2/$1.log`
+curl -X PATCH -H "Content-Type: application/json" -d '{ "deploy": { "log": "&log" } }' http://www.localhost.volcanic.co:3001/api/v1/deploys/$3.json
