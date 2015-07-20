@@ -11,6 +11,10 @@ echo "---------------"
 echo "Starting Deploy to $2 for $1"
 echo "---------------"
 
+# ORIGINAL THEME FILES ON DEV BOX /cloud9/cloud9/theme_name
+# NEED TO RSYNC TO VOLCANIC DEPLOY BOX /srv/www/volcanic_deploy/shared/themes/mode_name SO PRECOMPILE APP CAN ACCESS FILES FOR PRECOMPILE PROCESS WITH ASSET PATH /srv/www/volcanic_deploy/shared/themes/#{ENV["MODE"]}/#{ENV["THEME_NAME"]}/assets/
+rsync -arvce "ssh -o StrictHostKeyChecking=no" --delete deploy@54.75.232.48:/cloud9/cloud9/$1 /srv/www/volcanic_deploy/shared/themes/$2
+
 # RUN PRECOMPILE
 cd /srv/www/precompile_app/current
 RAILS_ENV=production THEME_NAME=$1 MODE=$2 bundle exec rake assets:clean

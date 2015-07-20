@@ -10,15 +10,15 @@ exec 2>&1
 
 # whoami
 
-echo "---------------"
-echo "Starting RSYNC to $2 for $1"
-echo "---------------"
+# echo "---------------"
+# echo "Starting RSYNC to $2 for $1"
+# echo "---------------"
 
 # START RSYNC OF THEME FILES TO VOLCANIC DEPLOY BOX
 
 # ORIGINAL THEME FILES ON DEV BOX /cloud9/cloud9/theme_name
 # NEED TO RSYNC TO VOLCANIC DEPLOY BOX /srv/www/volcanic_deploy/shared/themes/mode_name SO PRECOMPILE APP CAN ACCESS FILES FOR PRECOMPILE PROCESS WITH ASSET PATH /srv/www/volcanic_deploy/shared/themes/#{ENV["MODE"]}/#{ENV["THEME_NAME"]}/assets/
-rsync -arvce "ssh -o StrictHostKeyChecking=no" --delete /cloud9/cloud9/$1 deploy@46.137.112.6:/srv/www/volcanic_deploy/shared/themes/$2
+# rsync -arvce "ssh -o StrictHostKeyChecking=no" --delete /cloud9/cloud9/$1 deploy@46.137.112.6:/srv/www/volcanic_deploy/shared/themes/$2
 
 echo "---------------"
 echo "Starting Deploy API request to $2 for $1"
