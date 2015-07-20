@@ -7,7 +7,7 @@ OliverPrecompiler::Application.configure do
     # =========================================================
     # config.assets.prefix = "../../#{ENV["THEME_NAME"]}"
     config.assets.prefix = "/#{ENV["MODE"]}/#{ENV["THEME_NAME"]}"
-    config.assets.paths << "/srv/www/volcanic_deploy/shared/themes/#{ENV["THEME_NAME"]}/assets/"
+    config.assets.paths << "/srv/www/volcanic_deploy/shared/themes/#{ENV["MODE"]}/#{ENV["THEME_NAME"]}/assets/"
   end
   config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif *.svg *.liquid *.ashx *.cur *.eot *.ttf *.woff]
   config.sass.cache = false
