@@ -31,8 +31,8 @@ do
   # echo "public_dns = $dns"
   # rsync -arvce "ssh -o StrictHostKeyChecking=no" /cloud9/sync deploy@$dns:/srv/www/oliver/shared
 
-  rsync -arvce "ssh -o StrictHostKeyChecking=no" /srv/www/precompile_app/shared/sync/precompiled_assets/$2/$1 deploy@$dns:/srv/www/oliver/shared/sync/precompiled_assets/$2
-  rsync -arvce "ssh -o StrictHostKeyChecking=no" /srv/www/precompile_app/shared/sync/themes/$2/$1 deploy@$dns:/srv/www/oliver/shared/sync/themes/$2
+  rsync -arvce "ssh -o StrictHostKeyChecking=no" --delete /srv/www/precompile_app/shared/sync/precompiled_assets/$2/$1 deploy@$dns:/srv/www/oliver/shared/sync/precompiled_assets/$2
+  rsync -arvce "ssh -o StrictHostKeyChecking=no" --delete /srv/www/precompile_app/shared/sync/themes/$2/$1 deploy@$dns:/srv/www/oliver/shared/sync/themes/$2
 done
 
 echo "---------------"
