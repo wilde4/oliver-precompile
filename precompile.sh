@@ -2,7 +2,7 @@
 # THIS FILE IS MEANT TO RUN ON THE VOLCANIC DEPLOY BOX
 
 # LOGGING
-exec > >(tee /srv/www/volcanic_deploy/shared/system/logs/$2/$1/$3.log)
+exec > >(tee /srv/www/volcanic_deploy/shared/system/logs/$2/$1-$3.log)
 exec 2>&1
 
 # whoami
@@ -44,7 +44,7 @@ echo "Finished Deploy to $2 for $1"
 echo "---------------"
 
 # POST TO DEPLOY API TO UPDATE LOG RECORD
-curl -s -X PATCH -H "Content-Type: application/json" -d '{ "deploy": { "log_url": "/srv/www/volcanic_deploy/shared/system/logs/'"$2"'/'"$1"'/'"$3"'.log" } }' http://deploy.volcanic.co.uk/api/v1/deploys/$3.json
+curl -s -X PATCH -H "Content-Type: application/json" -d '{ "deploy": { "log_url": "/srv/www/volcanic_deploy/shared/system/logs/'"$2"'/'"$1"'-'"$3"'.log" } }' http://deploy.volcanic.co.uk/api/v1/deploys/$3.json
 
 # POST TO EU OLIVER API TO UPDATE SITE CACHE
 curl -X PUT -H "Content-Type: application/json" -d '{"theme_name": "'"$1"'"}' https://www.volcanic.co.uk/api/v1/metacontents/update_timestamps.json
