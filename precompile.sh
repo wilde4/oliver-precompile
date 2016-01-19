@@ -40,8 +40,8 @@ do
 done
 
 # s3cmd PUSH TO S3 BUCKET
-s3cmd sync --recursive --delete-removed /srv/www/precompile_app/shared/sync/precompiled_assets/$2/$1 s3://oliver-themes/precompiled_assets/$2/ >/tmp/s3_put_errors.txt
-s3cmd sync --recursive --delete-removed /srv/www/precompile_app/shared/sync/themes/$2/$1 s3://oliver-themes/themes/$2/ >/tmp/s3_put_errors.txt
+s3cmd sync --recursive --delete-removed /srv/www/precompile_app/shared/sync/precompiled_assets/$2/$1/ s3://oliver-themes/precompiled_assets/$2/$1/ >/tmp/s3_put_errors.txt
+s3cmd sync --recursive --delete-removed /srv/www/precompile_app/shared/sync/themes/$2/$1/ s3://oliver-themes/themes/$2/$1/ >/tmp/s3_put_errors.txt
 
 echo "---------------"
 echo "Finished Deploy to $2 for $1"
