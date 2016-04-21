@@ -23,25 +23,33 @@ RAILS_ENV=production THEME_NAME=$1 MODE=$2 bundle exec rake assets:precompile
 # COPY PRECOMPILED ASSETS TO /srv/sync/precompiled_assets
 rm -rf /srv/www/precompile_app/shared/sync/precompiled_assets/$2/$1
 cp -Rf /srv/www/precompile_app/current/public/$2/$1 /srv/www/precompile_app/shared/sync/precompiled_assets/$2
+# COPY PRECOMPILED ASSETS TO /deploy_themes/precompiled_assets
+rm -rf /deploy_themes/precompiled_assets/$2/$1
+cp -Rf /srv/www/precompile_app/current/public/$2/$1 /deploy_themes/precompiled_assets/$2
+
 
 # COPY LIQUID FILES TO /srv/www/precompile_app/shared/sync/themes/staging OR /srv/www/precompile_app/shared/sync/themes/production
 rm -rf /srv/www/precompile_app/shared/sync/themes/$2/$1
 cp -Rf /srv/www/volcanic_deploy/shared/themes/$2/$1 /srv/www/precompile_app/shared/sync/themes/$2
+# COPY LIQUID FILES TO /deploy_themes/themes/staging OR /deploy_themes/themes/production
+rm -rf /deploy_themes/themes/$2/$1
+cp -Rf /srv/www/volcanic_deploy/shared/themes/$2/$1 /deploy_themes/themes/$2
 
 # RSYNC TO PUBLIC_DNS LIST
 IFS=','
 for dns in $4
 do
-  # echo "public_dns = $dns"
-  # rsync -arvce "ssh -o StrictHostKeyChecking=no" /cloud9/sync deploy@$dns:/srv/www/oliver/shared
-
   rsync -arvce "ssh -o StrictHostKeyChecking=no" --delete /srv/www/precompile_app/shared/sync/precompiled_assets/$2/$1 deploy@$dns:/srv/www/oliver/shared/sync/precompiled_assets/$2
   rsync -arvce "ssh -o StrictHostKeyChecking=no" --delete /srv/www/precompile_app/shared/sync/themes/$2/$1 deploy@$dns:/srv/www/oliver/shared/sync/themes/$2
+  # rsync -arvce "ssh -o StrictHostKeyChecking=no" --delete /deploy_themes/precompiled_assets/$2/$1 deploy@$dns:/srv/www/oliver/shared/sync/precompiled_assets/$2
+  # rsync -arvce "ssh -o StrictHostKeyChecking=no" --delete /deploy_themes/themes/$2/$1 deploy@$dns:/srv/www/oliver/shared/sync/themes/$2
 done
 
 # s3cmd PUSH TO S3 BUCKET
 s3cmd sync --recursive --delete-removed /srv/www/precompile_app/shared/sync/precompiled_assets/$2/$1/ s3://oliver-themes/precompiled_assets/$2/$1/ >/tmp/s3_put_errors.txt
 s3cmd sync --recursive --delete-removed /srv/www/precompile_app/shared/sync/themes/$2/$1/ s3://oliver-themes/themes/$2/$1/ >/tmp/s3_put_errors.txt
+# s3cmd sync --recursive --delete-removed /deploy_themes/precompiled_assets/$2/$1/ s3://oliver-themes/precompiled_assets/$2/$1/ >/tmp/s3_put_errors.txt
+# s3cmd sync --recursive --delete-removed /deploy_themes/themes/$2/$1/ s3://oliver-themes/themes/$2/$1/ >/tmp/s3_put_errors.txt
 
 echo "---------------"
 echo "Finished Deploy to $2 for $1"
@@ -52,5 +60,3 @@ curl -s -X PATCH -H "Content-Type: application/json" -d '{ "deploy": { "log_url"
 
 # POST TO EU OLIVER API TO UPDATE SITE CACHE
 curl -X PUT -H "Content-Type: application/json" -d '{"theme_name": "'"$1"'"}' https://www.volcanic.co.uk/api/v1/metacontents/update_timestamps.json
-# POST TO SINGAPORE OLIVER API TO UPDATE SITE CACHE
-# curl -X PUT -H "Content-Type: application/json" -d '{"theme_name": "'"$1"'"}' https://www.volcanic.sg/api/v1/metacontents/update_timestamps.json
