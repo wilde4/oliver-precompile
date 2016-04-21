@@ -39,17 +39,17 @@ cp -Rf /srv/www/volcanic_deploy/shared/themes/$2/$1 /deploy_themes/themes/$2
 IFS=','
 for dns in $4
 do
-  rsync -arvce "ssh -o StrictHostKeyChecking=no" --delete /srv/www/precompile_app/shared/sync/precompiled_assets/$2/$1 deploy@$dns:/srv/www/oliver/shared/sync/precompiled_assets/$2
-  rsync -arvce "ssh -o StrictHostKeyChecking=no" --delete /srv/www/precompile_app/shared/sync/themes/$2/$1 deploy@$dns:/srv/www/oliver/shared/sync/themes/$2
-  # rsync -arvce "ssh -o StrictHostKeyChecking=no" --delete /deploy_themes/precompiled_assets/$2/$1 deploy@$dns:/srv/www/oliver/shared/sync/precompiled_assets/$2
-  # rsync -arvce "ssh -o StrictHostKeyChecking=no" --delete /deploy_themes/themes/$2/$1 deploy@$dns:/srv/www/oliver/shared/sync/themes/$2
+  # rsync -arvce "ssh -o StrictHostKeyChecking=no" --delete /srv/www/precompile_app/shared/sync/precompiled_assets/$2/$1 deploy@$dns:/srv/www/oliver/shared/sync/precompiled_assets/$2
+  # rsync -arvce "ssh -o StrictHostKeyChecking=no" --delete /srv/www/precompile_app/shared/sync/themes/$2/$1 deploy@$dns:/srv/www/oliver/shared/sync/themes/$2
+  rsync -arvce "ssh -o StrictHostKeyChecking=no" --delete /deploy_themes/precompiled_assets/$2/$1 deploy@$dns:/srv/www/oliver/shared/sync/precompiled_assets/$2
+  rsync -arvce "ssh -o StrictHostKeyChecking=no" --delete /deploy_themes/themes/$2/$1 deploy@$dns:/srv/www/oliver/shared/sync/themes/$2
 done
 
 # s3cmd PUSH TO S3 BUCKET
-s3cmd sync --recursive --delete-removed /srv/www/precompile_app/shared/sync/precompiled_assets/$2/$1/ s3://oliver-themes/precompiled_assets/$2/$1/ >/tmp/s3_put_errors.txt
-s3cmd sync --recursive --delete-removed /srv/www/precompile_app/shared/sync/themes/$2/$1/ s3://oliver-themes/themes/$2/$1/ >/tmp/s3_put_errors.txt
-# s3cmd sync --recursive --delete-removed /deploy_themes/precompiled_assets/$2/$1/ s3://oliver-themes/precompiled_assets/$2/$1/ >/tmp/s3_put_errors.txt
-# s3cmd sync --recursive --delete-removed /deploy_themes/themes/$2/$1/ s3://oliver-themes/themes/$2/$1/ >/tmp/s3_put_errors.txt
+# s3cmd sync --recursive --delete-removed /srv/www/precompile_app/shared/sync/precompiled_assets/$2/$1/ s3://oliver-themes/precompiled_assets/$2/$1/ >/tmp/s3_put_errors.txt
+# s3cmd sync --recursive --delete-removed /srv/www/precompile_app/shared/sync/themes/$2/$1/ s3://oliver-themes/themes/$2/$1/ >/tmp/s3_put_errors.txt
+s3cmd sync --recursive --delete-removed /deploy_themes/precompiled_assets/$2/$1/ s3://oliver-themes/precompiled_assets/$2/$1/ >/tmp/s3_put_errors.txt
+s3cmd sync --recursive --delete-removed /deploy_themes/themes/$2/$1/ s3://oliver-themes/themes/$2/$1/ >/tmp/s3_put_errors.txt
 
 echo "---------------"
 echo "Finished Deploy to $2 for $1"

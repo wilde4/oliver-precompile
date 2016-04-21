@@ -1,3 +1,7 @@
 == Volcanic Deploy Volume
 
 cp -Rf /srv/www/precompile_app/shared/sync/precompiled_assets/production /deploy_themes/precompiled_assets
+cp -Rf /srv/www/precompile_app/shared/sync/precompiled_assets/staging /deploy_themes/precompiled_assets
+
+cp -Rf /srv/www/precompile_app/shared/sync/themes/production /deploy_themes/themes
+cp -Rf /srv/www/precompile_app/shared/sync/themes/staging /deploy_themes/themes
