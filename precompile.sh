@@ -21,16 +21,16 @@ RAILS_ENV=production THEME_NAME=$1 MODE=$2 bundle exec rake assets:clean
 RAILS_ENV=production THEME_NAME=$1 MODE=$2 bundle exec rake assets:precompile
 
 # COPY PRECOMPILED ASSETS TO /srv/sync/precompiled_assets
-rm -rf /srv/www/precompile_app/shared/sync/precompiled_assets/$2/$1
-cp -Rf /srv/www/precompile_app/current/public/$2/$1 /srv/www/precompile_app/shared/sync/precompiled_assets/$2
+# rm -rf /srv/www/precompile_app/shared/sync/precompiled_assets/$2/$1
+# cp -Rf /srv/www/precompile_app/current/public/$2/$1 /srv/www/precompile_app/shared/sync/precompiled_assets/$2
 # COPY PRECOMPILED ASSETS TO /deploy_themes/precompiled_assets
 rm -rf /deploy_themes/precompiled_assets/$2/$1
 cp -Rf /srv/www/precompile_app/current/public/$2/$1 /deploy_themes/precompiled_assets/$2
 
 
 # COPY LIQUID FILES TO /srv/www/precompile_app/shared/sync/themes/staging OR /srv/www/precompile_app/shared/sync/themes/production
-rm -rf /srv/www/precompile_app/shared/sync/themes/$2/$1
-cp -Rf /srv/www/volcanic_deploy/shared/themes/$2/$1 /srv/www/precompile_app/shared/sync/themes/$2
+# rm -rf /srv/www/precompile_app/shared/sync/themes/$2/$1
+# cp -Rf /srv/www/volcanic_deploy/shared/themes/$2/$1 /srv/www/precompile_app/shared/sync/themes/$2
 # COPY LIQUID FILES TO /deploy_themes/themes/staging OR /deploy_themes/themes/production
 rm -rf /deploy_themes/themes/$2/$1
 cp -Rf /srv/www/volcanic_deploy/shared/themes/$2/$1 /deploy_themes/themes/$2
