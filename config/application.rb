@@ -27,6 +27,6 @@ module OliverPrecompiler
     config.assets.cache_store = :null_store
     config.sass.cache = false
     config.assets.initialize_on_precompile = false
-    config.assets.image_optim = false
+    # config.assets.image_optim = false
   end
 end
