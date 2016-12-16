@@ -12,6 +12,7 @@ OliverPrecompiler::Application.configure do
 
     # Adding relevant templates assets for compilation
     if ENV["THEME_NAME"] == '_templates'
+      config.assets.paths << "/srv/www/volcanic_deploy/shared/themes/#{ENV["MODE"]}/#{ENV["THEME_NAME"]}/"
       folders = Dir.glob("/srv/www/volcanic_deploy/shared/themes/#{ENV["MODE"]}/_templates/*")
       @pages = folders.map { |folder| folder.split('/').last }
 
