@@ -17,7 +17,6 @@ OliverPrecompiler::Application.configure do
       @pages = folders.map { |folder| folder.split('/').last }
 
       @pages.each do |page|
-        puts page
         Dir.glob("/srv/www/volcanic_deploy/shared/themes/#{ENV["MODE"]}/_templates/#{page}/css/*").each do |file|
           config.assets.precompile += ["#{page}/css/#{file.split('/').last.split('.').first}.css"]
         end
