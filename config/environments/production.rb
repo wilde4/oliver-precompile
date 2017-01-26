@@ -24,7 +24,7 @@ OliverPrecompiler::Application.configure do
     end
 
   end
-  config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif *.svg *.liquid *.ashx *.cur *.eot *.ttf *.woff application_amp.css]
+  config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif *.svg *.liquid *.ashx *.cur *.eot *.ttf *.woff stylesheets/application_amp.css]
   config.sass.cache = false
   # Code is not reloaded between requests.
   config.cache_classes = true
