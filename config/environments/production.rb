@@ -10,6 +10,7 @@ OliverPrecompiler::Application.configure do
 
     config.assets.paths << "/srv/www/volcanic_deploy/shared/themes/#{ENV["MODE"]}/#{ENV["THEME_NAME"]}/assets/"
     config.assets.paths << "/srv/www/volcanic_deploy/shared/themes/#{ENV["MODE"]}/_tephra/"
+    config.assets.paths << "/deploy_themes/themes/#{ENV['MODE']}/_tephra/"
 
     # config.assets.paths << Rails.root.to_s + "/test-themes/#{ENV["THEME_NAME"]}/assets/"
     # config.assets.paths << Rails.root.to_s + "/test-themes/_tephra/"
