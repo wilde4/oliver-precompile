@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '4.1.0'
 
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
@@ -33,7 +33,7 @@ gem 'image_optim_pack', '~> 0.2.3'
 
 gem 'sprockets', '2.11.0', :git => 'https://github.com/volcanic-uk/sprockets.git', branch: 'tephra' #'oliver'
 # gem 'sprockets', :path => '../sprockets'
-
+gem 'sprockets-rails', '2.1.3'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
