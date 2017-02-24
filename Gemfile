@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'image_optim', '~> 0.22.1'
 gem 'image_optim_pack', '~> 0.2.3'
 
-gem 'sprockets', '2.11.0', :git => 'https://github.com/volcanic-uk/sprockets.git', branch: 'tephra' #'oliver'
+gem 'sprockets', :git => 'https://github.com/volcanic-uk/sprockets.git', branch: 'tephra' #'oliver'
 # gem 'sprockets', :path => '../sprockets'
 gem 'sprockets-rails', '2.1.3'
 
