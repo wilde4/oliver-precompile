@@ -31,6 +31,10 @@ gem 'jbuilder', '~> 1.2'
 gem 'image_optim', '~> 0.22.1'
 gem 'image_optim_pack', '~> 0.2.3'
 
+gem 'sprockets', '2.11.0', :git => 'https://github.com/volcanic-uk/sprockets.git', branch: 'tephra' #'oliver'
+# gem 'sprockets', :path => '../sprockets'
+
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

@@ -28,5 +28,6 @@ module OliverPrecompiler
     config.sass.cache = false
     config.assets.initialize_on_precompile = false
     # config.assets.image_optim = false
+    config.autoload_paths += %W(#{Rails.root}/lib/classes/)
   end
 end
