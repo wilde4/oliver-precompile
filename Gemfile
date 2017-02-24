@@ -35,6 +35,8 @@ gem 'sprockets', :git => 'https://github.com/volcanic-uk/sprockets.git', branch:
 # gem 'sprockets', :path => '../sprockets'
 gem 'sprockets-rails', '2.1.3'
 
+gem 'rake', '10.4.2'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
