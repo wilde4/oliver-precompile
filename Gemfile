@@ -37,6 +37,8 @@ gem 'sprockets-rails', '2.1.3'
 
 gem 'rake', '10.4.2'
 
+gem 'figaro'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

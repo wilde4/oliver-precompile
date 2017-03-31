@@ -18,3 +18,4 @@
 .ruby-version
 /public
 /test-themes
+/config/application.yml
