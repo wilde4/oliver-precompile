@@ -25,6 +25,22 @@ module Sass
       def to_s
         'Searching for the theme for files'
       end
+
+      def key(name, _options)
+        [self.class.name + ':' + name + ':' + ENV['THEME_NAME'],
+         name]
+      end
+
+      def mtime(uri, _options)
+        if uri.start_with?('$theme')
+          uri = uri.sub('$theme/', '')
+          # full_filename = ::Rails.root.to_s + "/app/themes/#{ENV['MODE']}/#{ENV['THEME_NAME']}/assets/stylesheets/#{uri}.scss"
+          full_filename = "/srv/www/volcanic_deploy/shared/themes/#{ENV["MODE"]}/#{ENV["THEME_NAME"]}/assets/stylesheets/#{uri}.scss"
+          File.mtime(full_filename)
+        else
+          nil
+        end
+      end
     end
   end
 end
