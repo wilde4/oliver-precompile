@@ -28,8 +28,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 # Image compression 
-gem 'image_optim', '~> 0.22.1'
-gem 'image_optim_pack', '~> 0.2.3'
+# gem 'image_optim', '~> 0.22.1'
+# gem 'image_optim_pack', '~> 0.2.3'
 
 gem 'sprockets', :git => 'https://github.com/volcanic-uk/sprockets.git', branch: 'tephra' #'oliver'
 # gem 'sprockets', :path => '../sprockets'
